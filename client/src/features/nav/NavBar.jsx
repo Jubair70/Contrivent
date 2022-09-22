@@ -7,7 +7,7 @@ export default function NavBar({setFormOpen}) {
             <Container>
                 <Menu.Item header>
                     <img src="/assets/logo.png" alt="logo" style={{marginRight: 15}}/>
-                    Re-vents
+                    Contrivent
                 </Menu.Item>
                 <Menu.Item name='Events' />
                 <Menu.Item>
