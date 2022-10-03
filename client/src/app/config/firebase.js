@@ -5,13 +5,13 @@ import 'firebase/auth';
 import 'firebase/storage';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBbC6PLIYq_BNuIpF7KKwT6Up6PYuOXlJw",
-    authDomain: "reventscourse.firebaseapp.com",
-    databaseURL: "https://reventscourse.firebaseio.com",
-    projectId: "reventscourse",
-    storageBucket: "reventscourse.appspot.com",
-    messagingSenderId: "990229111437",
-    appId: "1:990229111437:web:cb40dfdf45505da5b7f8c4"
+    apiKey: "AIzaSyDoANVYmWFUY-JU4WQuzbUk6KYp-37PjJI",
+    authDomain: "contrivent-db.firebaseapp.com",
+    // databaseURL: "https://reventscourse.firebaseio.com",
+    projectId: "contrivent-db",
+    storageBucket: "contrivent-db.appspot.com",
+    messagingSenderId: "421158695702",
+    appId: "1:421158695702:web:07c55fb489d32d2bc29637"
 }
 
 firebase.initializeApp(firebaseConfig);
