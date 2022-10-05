@@ -7,7 +7,6 @@ import 'firebase/storage';
 const firebaseConfig = {
     apiKey: "AIzaSyDoANVYmWFUY-JU4WQuzbUk6KYp-37PjJI",
     authDomain: "contrivent-db.firebaseapp.com",
-    // databaseURL: "https://reventscourse.firebaseio.com",
     projectId: "contrivent-db",
     storageBucket: "contrivent-db.appspot.com",
     messagingSenderId: "421158695702",
