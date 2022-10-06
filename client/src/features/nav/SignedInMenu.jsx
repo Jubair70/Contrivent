@@ -1,43 +1,36 @@
-import React from 'react';
-import { Menu, Image, Dropdown } from 'semantic-ui-react';
-import { Link, useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { signOutFirebase } from '../../app/firestore/firebaseService';
+import { SIGN_IN_USER, SIGN_OUT_USER } from './authConstants';
+import {APP_LOADED} from '../../app/async/asyncReducer';
+import firebase from '../../app/config/firebase';
+import { getUserProfile, dataFromSnapshot } from '../../app/firestore/firestoreService';
+import { listenToCurrentUserProfile } from '../profiles/profileActions';
 
-export default function SignedInMenu() {
-  const {currentUser} = useSelector(state => state.auth);
-  const history = useHistory();
-
-  async function handleSignOut() {
-    try {
-      history.push('/');
-      await signOutFirebase();
-    } catch (error) {
-      toast.error(error.message);
-    }
+export function signInUser(user) {
+  return {
+      type: SIGN_IN_USER,
+      payload: user
   }
+}
 
-  return (
-    <Menu.Item position='right'>
-      <Image avatar spaced='right' src={currentUser.photoURL || '/assets/user.png'} />
-      <Dropdown pointing='top left' text={currentUser.displayName}>
-        <Dropdown.Menu>
-          <Dropdown.Item
-            as={Link}
-            to='/createEvent'
-            text='Create Event'
-            icon='plus'
-          />
-          <Dropdown.Item text='My profile' icon='user' />
-          <Dropdown.Item as={Link} to='/account' text='My account' icon='settings' />
-          <Dropdown.Item
-            onClick={handleSignOut}
-            text='Sign out'
-            icon='power'
-          />
-        </Dropdown.Menu>
-      </Dropdown>
-    </Menu.Item>
-  );
+export function verifyAuth() {
+    return function (dispatch) {
+        return firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                dispatch(signInUser(user));
+                const profileRef = getUserProfile(user.uid);
+                profileRef.onSnapshot(snapshot => {
+                  dispatch(listenToCurrentUserProfile(dataFromSnapshot(snapshot)));
+                  dispatch({type: APP_LOADED})
+                })
+            } else {
+                dispatch(signOutUser())
+                dispatch({type: APP_LOADED})
+            }
+        })
+    }
+}
+
+export function signOutUser() {
+  return {
+    type: SIGN_OUT_USER,
+  };
 }
