@@ -18,10 +18,10 @@ const store = configureStore();
 function render() {
   root.render(
     <Provider store={store}>
-      <ConnectedRouter history={history}>
+      <BrowserRouter history={history}>
         <ScrollToTop />
         <App />
-      </ConnectedRouter>
+      </BrowserRouter>
     </Provider>
   );
 }
