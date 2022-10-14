@@ -35,14 +35,14 @@ export default function EventForm({ match, history }) {
     description: '',
     city: {
       address: 'NY, USA',
-      latlng: {
+      latLng: {
           lat: 40.7484405,
           lng:  -73.98566440000002
       }
   },
   venue: {
       address: 'Empire State Building, 5th Avenue, New York, NY, USA',
-      latlng: {
+      latLng: {
           lat: 40.7484405,
           lng:  -73.98566440000002
       }
