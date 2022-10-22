@@ -10,8 +10,6 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { configureStore,history } from "./app/store/configureStore";
 import ScrollToTop from "./app/layout/ScrollToTop";
-import { ConnectedRouter } from "connected-react-router";
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = configureStore();
 
