@@ -1,9 +1,7 @@
 {
   "functions": [
     {
-      "predeploy": [
-        
-      ],
+      "predeploy": [],
       "source": "functions",
       "codebase": "default",
       "ignore": [
@@ -13,5 +11,13 @@
         "firebase-debug.*.log"
       ]
     }
-  ]
+  ],
+  "hosting": {
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
 }
